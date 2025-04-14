@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="EmployeeData">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="EmployeeDataset">
+      <Fields>
+        <Field Name="EmpID"><DataField>EmpID</DataField></Field>
+        <Field Name="Name"><DataField>Name</DataField></Field>
+        <Field Name="Designation"><DataField>Designation</DataField></Field>
+        <Field Name="Date_Of_Joining"><DataField>Date_Of_Joining</DataField></Field>
+        <Field Name="Salary"><DataField>Salary</DataField></Field>
+        <Field Name="Gender"><DataField>Gender</DataField></Field>
+        <Field Name="StateName"><DataField>StateName</DataField></Field>
+      </Fields>
+      <Query>
+        <DataSourceName>EmployeeData</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="ReportTitle">
+            <Value>Employee List Report</Value>
+            <Style><FontSize>16pt</FontSize><TextAlign>Center</TextAlign></Style>
+            <Top>0.5cm</Top>
+            <Height>1cm</Height>
+            <Width>10cm</Width>
+          </Textbox>
+          <Tablix Name="EmployeeTable">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn><Width>1cm</Width></TablixColumn>
+                <TablixColumn><Width>3cm</Width></TablixColumn>
+                <TablixColumn><Width>3cm</Width></TablixColumn>
+                <TablixColumn><Width>2cm</Width></TablixColumn>
+                <TablixColumn><Width>2cm</Width></TablixColumn>
+                <TablixColumn><Width>1.5cm</Width></TablixColumn>
+                <TablixColumn><Width>3cm</Width></TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="HeaderSNo"><Value>S.No.</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderName"><Value>Name</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderDesignation"><Value>Designation</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderDOJ"><Value>DOJ</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderSalary"><Value>Salary</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderGender"><Value>Gender</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderState"><Value>State</Value><Style><FontWeight>Bold</FontWeight></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="SNo"><Value>=RowNumber(Nothing)</Value></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="Name"><Value>=Fields!Name.Value</Value></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="Designation"><Value>=Fields!Designation.Value</Value></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="DOJ"><Value>=Format(Fields!Date_Of_Joining.Value, "yyyy-MM-dd")</Value></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="Salary"><Value>=Fields!Salary.Value</Value></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="Gender"><Value>=Fields!Gender.Value</Value></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="StateName"><Value>=Fields!StateName.Value</Value></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <DataSetName>EmployeeDataset</DataSetName>
+            <Top>2cm</Top>
+            <Width>15.5cm</Width>
+          </Tablix>
+        </ReportItems>
+        <Height>5cm</Height>
+      </Body>
+      <Width>21cm</Width>
+    </ReportSection>
+  </ReportSections>
+</Report>
